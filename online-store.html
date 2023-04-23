@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đặc sản Đà Lạt - Mua hàng online</title>
+    <link rel="icon" href="./dist/assets/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./dist/styles.css" />
+    <script defer src="./dist/lib.bundle.js"></script>
+    <script defer src="./dist/bundle.js"></script>
+  </head>
+  <body>
+    <div>
+      <!-- Begin: header -->
+      <header>
+        <div class="bg-tiger_eye">
+          <div
+            class="mx-auto max-w-screen-custom_x max-custom_md:max-w-[750px] custom_md:h-[51px] h-[96px] px-[15px]"
+          >
+            <div
+              class="flex justify-between h-full max-custom_md:justify-evenly max-custom_md:flex-col"
+            >
+              <!-- Begin: category -->
+              <div
+                class="items-center hidden h-full gap-4 px-4 cursor-pointer bg-dark_charcoal custom_md:flex"
+              >
+                <div class="w-[23px] flex flex-col">
+                  <div class="my-[2px] h-[3px] bg-white rounded"></div>
+                  <div class="my-[2px] h-[3px] bg-white rounded"></div>
+                  <div class="my-[2px] h-[3px] bg-white rounded"></div>
+                </div>
+                <p class="text-white text-[14px]">Danh mục sản phẩm</p>
+              </div>
+              <!-- End: category -->
+              <!-- Begin: logo -->
+              <div class="flex">
+                <div class="flex items-center flex-1">
+                  <a
+                    href="./online-store.html"
+                    class="inline-flex items-center"
+                  >
+                    <div>
+                      <img
+                        src="./dist/assets/images/logo-text.webp"
+                        alt=""
+                        class="h-[38px]"
+                      />
+                    </div>
+                  </a>
+                </div>
+                <div class="custom_md:hidden">
+                  <!-- Begin: button mobile show category -->
+                  <button
+                    x-data
+                    class="flex flex-col items-center text-white my-[6px]"
+                    @click="console.log(324)"
+                  >
+                    <div class="flex flex-col gap-1.5">
+                      <div class="h-[2px] w-[30px] bg-white"></div>
+                      <div class="h-[2px] w-[30px] bg-white"></div>
+                      <div class="h-[2px] w-[30px] bg-white"></div>
+                    </div>
+                    <span class="text-[12px]">Menu</span>
+                  </button>
+                  <!-- End: button mobile show category -->
+                </div>
+              </div>
+              <!-- End: logo -->
+              <!-- Begin: search -->
+              <div class="flex items-center">
+                <div
+                  class="w-[348px] max-custom_md:w-full p-[3px_5px] relative"
+                >
+                  <input
+                    type="text"
+                    placeholder="Tìm kiếm sản phẩm"
+                    class="bg-white rounded-full text-[14px] font-normal h-[40px] outline-none w-full pl-5 py-2.5 pr-10"
+                  />
+                  <div class="absolute -translate-y-1/2 top-1/2 right-5">
+                    <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                  </div>
+                </div>
+              </div>
+              <!-- End: search -->
+              <!-- Begin: call -->
+              <div
+                class="items-center hidden border-r custom_md:flex border-r-cadmium_green"
+              >
+                <a
+                  href="tel:19009065"
+                  class="flex items-center gap-2 text-white px-[10px] py-[3px]"
+                >
+                  <div class="text-[20px]">
+                    <i class="fa-solid fa-phone"></i>
+                  </div>
+                  <div>
+                    <p class="font-bold text-[14px]">19009065</p>
+                    <p class="text-[12px]">07:30 - 22:30</p>
+                  </div>
+                </a>
+              </div>
+              <!-- End: call -->
+              <!-- Begin: location -->
+              <a
+                href="./store-address.html"
+                class="items-center hidden gap-3 text-white custom_md:flex"
+              >
+                <div>
+                  <i class="fa-sharp fa-solid fa-location-dot text-[20px]"></i>
+                </div>
+                <div>
+                  <p class="font-bold text-[14px]">Xem 40 cửa hàng</p>
+                  <p class="text-[12px]">07:30 - 22:30</p>
+                </div>
+              </a>
+              <!-- End: location -->
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- End: header -->
+    </div>
+  </body>
+</html>

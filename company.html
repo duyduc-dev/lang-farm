@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L'angfarm - Đặc sản Dà Lạt</title>
+    <link rel="icon" href="./dist/assets/favicon.ico" />
+    <link rel="stylesheet" href="./dist/styles.css" />
+    <script defer src="./dist/lib.bundle.js"></script>
+    <script defer src="./dist/bundle.js"></script>
+  </head>
+
+  <body>
+    <div
+      x-data="{ visibleSidebar: false }"
+      class="flex"
+      :class="visibleSidebar && '!max-h-screen !overflow-y-hidden'"
+    >
+      <div class="flex-1" :class="visibleSidebar && 'ml-[-260px]'">
+        <!-- Begin: header -->
+        <header class="header-page">
+          <div class="h-[140px] w-full flex justify-between relative">
+            <div
+              class="absolute top-0 left-0 z-[-1] min-h-[600px] max-h-[600px] w-full overflow-hidden"
+            >
+              <img
+                src="./dist/assets/images/banner10.jpg"
+                alt=""
+                class="object-cover w-full h-full overflow-hidden min-h-[600px] max-h-[600px]"
+              />
+              <div
+                class="absolute top-0 bottom-0 left-0 right-0 bg-[rgba(32,26,22,.7)]"
+              ></div>
+              <div
+                class="absolute top-0 bottom-0 left-0 right-0 text-white text-[30px] sm:text-[86px] font-[200] text-center p-8 max-w-[956px] mx-auto w-full flex items-center justify-center"
+              >
+                <h1 class="animate__animated animate__slideInUp">Sơ Lược</h1>
+              </div>
+            </div>
+
+            <div
+              class="flex justify-between w-full p-5 h-[140px] transition-all duration-300"
+              :class="$store.positionHeader > 800 && 'fixed bg-[rgba(32,26,22,.9)] z-[1000]'"
+            >
+              <div class="w-[100px] h-[100px]">
+                <img src="./dist/assets/images/logo.png" alt="" />
+              </div>
+              <div class="flex items-center">
+                <div x-data class="items-center hidden lg:flex">
+                  <template x-data x-for="header in $store.rawHeader">
+                    <div
+                      x-data="{hover: false}"
+                      class="relative group"
+                      @mouseover="hover = true"
+                      @mouseout="hover = false"
+                    >
+                      <a
+                        :href="header.html"
+                        x-text="header.title"
+                        class="animate__animated animate__fadeIn hover:text-tiger_eye transition-all duration-300 cursor-pointer px-[13px] py-[10px] uppercase text-white text-[13px] font-[300] tracking-[2px]"
+                        :class="$store.router.pathname === header.html && '!text-tiger_eye'"
+                      >
+                      </a>
+                      <template x-data x-if="header.children">
+                        <div
+                          class="transition-all duration-300 absolute left-0 !h-0 !p-0 text-white top-full group-hover:!h-auto bg-erie_black text-[13px] group-hover:!py-[13px] leading-[16px] tracking-[2px] whitespace-nowrap uppercase font-[300]"
+                        >
+                          <template
+                            x-for="item in header.children"
+                            :key="item.title"
+                          >
+                            <a
+                              :href="item.html"
+                              class="block px-5 group-hover:!py-1.5 py-0 pointer-events-none group-hover:pointer-events-auto cursor-pointer hover:text-tiger_eye transition-all duration-300"
+                              x-text="hover ? item.title : ''"
+                            ></a>
+                          </template>
+                        </div>
+                      </template>
+                    </div>
+                  </template>
+                </div>
+              </div>
+              <div
+                class="flex items-center animate__animated animate__fadeIn lg:hidden"
+              >
+                <div
+                  class="flex flex-col gap-1.5 cursor-pointer"
+                  @click="visibleSidebar=!visibleSidebar"
+                >
+                  <div class="bg-white w-[22px] h-[2px]"></div>
+                  <div class="bg-white w-[22px] h-[2px]"></div>
+                  <div class="bg-white w-[22px] h-[2px]"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <!-- End: header -->
+
+        <!-- Begin: body -->
+        <main>
+          <div class="pt-[calc(600px_-_140px)]"></div>
+          <section class="mx-auto max-w-screen-custom_lg py-[96px] px-8">
+            <h1 class="text-[38px] font-[300] text-center mb-[21px]">
+              Chúng tôi đến từ Đà Lạt, Việt Nam
+            </h1>
+            <p class="text-center font-[300] px-[17px] pb-[17px] break-words">
+              L'angfarm là một thương hiệu của công ty TNHH Quảng Thái, được
+              thành lập vào năm 2002 tại TP. Đà Lạt. Hiện nay, L'angfarm là
+              thương hiệu đặc sản Đà Lạt hàng đầu, cung cấp sản phẩm nông sản
+              chế biến chất lượng cao, an toàn, tin cậy, phải chăng, đẹp mắt,
+              hài lòng như: Trà atisô, bánh mứt đặc sản, cà phê, hạt, nước cốt,
+              thảo mộc, thịt khô, trà pha ấm, trà túi lọc, trái cây sấy dẻo,
+              trái cây sấy giòn, bột trà xanh matcha, trà sencha hoa,…
+            </p>
+
+            <div class="p-[17px]">
+              <hr class="my-8" />
+            </div>
+            <div>
+              <div class="p-[17px]">
+                <img
+                  src="./dist/assets/images/company/1.jpg"
+                  alt=""
+                  class="w-full h-full"
+                />
+              </div>
+              <div class="grid sm:grid-cols-2">
+                <div class="p-[17px]">
+                  <img src="./dist/assets/images/company/2.jpg" alt="" />
+                </div>
+                <div class="p-[17px]">
+                  <img src="./dist/assets/images/company/3.jpg" alt="" />
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="relative">
+            <div
+              class="absolute top-0 left-0 z-[-1] min-h-[500px] max-h-[500px] w-full overflow-hidden"
+            >
+              <img
+                src="./dist/assets/images/banner11.jpg"
+                alt=""
+                class="object-cover w-full h-full overflow-hidden min-h-[500px] max-h-[500px]"
+              />
+              <div
+                class="absolute top-0 bottom-0 left-0 right-0 bg-[rgba(32,26,22,.7)]"
+              ></div>
+              <div
+                class="absolute top-0 bottom-0 left-0 right-0 text-white text-[30px] sm:text-[86px] font-[200] text-center p-8 max-w-[956px] mx-auto w-full flex items-center justify-center"
+              >
+                <h1 class="animate__animated animate__slideInUp">Sứ mệnh</h1>
+              </div>
+            </div>
+            <div class="pt-[500px]"></div>
+          </section>
+          <section class="mx-auto max-w-screen-custom_lg py-[96px] px-8">
+            <div class="px-[17px]">
+              <h1 class="text-[35px] font-[300] text-center mb-[21px]">
+                Thương hiệu đặc sản Đà Lạt dẫn đầu
+              </h1>
+              <p class="text-center font-[300] px-[17px] pb-[17px] break-words">
+                Chúng tôi làm việc chăm chỉ mỗi ngày để tạo ra những sản phẩm
+                đặc sản Đà Lạt uy tín, chất lượng cao, tốt cho sức khoẻ, bao bì
+                đẹp mắt, hậu mãi hài lòng. Chúng tôi luôn mang trong mình khát
+                vọng có thể giới thiệu cho toàn Thế Giới những sản phẩm tốt như
+                vậy từ quê hương mình
+              </p>
+            </div>
+          </section>
+          <section class="relative">
+            <div
+              class="absolute top-0 left-0 z-[10] min-h-[500px] max-h-[500px] w-full overflow-hidden"
+            >
+              <img
+                src="./dist/assets/images/banner12.jpg"
+                alt=""
+                class="object-cover w-full h-full overflow-hidden min-h-[500px] max-h-[500px]"
+              />
+              <div
+                class="absolute top-0 bottom-0 left-0 right-0 bg-[rgba(32,26,22,.7)]"
+              ></div>
+              <div
+                class="absolute z-[10] top-0 bottom-0 left-0 right-0 text-white text-[30px] sm:text-[86px] font-[200] text-center p-8 max-w-[956px] mx-auto w-full flex items-center justify-center"
+              >
+                <div class="z-[1000]">
+                  <h1 class="animate__animated animate__slideInUp">Niềm tin</h1>
+                </div>
+              </div>
+            </div>
+            <div class="pt-[500px] z-[-1]"></div>
+          </section>
+
+          <section class="mx-auto max-w-screen-custom_lg py-[96px] px-8">
+            <h1 class="text-[38px] font-[300] text-center mb-[21px]">
+              Đưa nông sản thành một phần có nghĩa và hợp lý trong cuộc sống bận
+              rộn hàng ngày
+            </h1>
+            <p class="text-center font-[300] px-[17px] pb-[17px] break-words">
+              Chúng tôi tin rằng nông sản Việt Nam nói chung và nông sản Đà Lạt
+              nói riêng mang trong mình giá trị vô cùng to lớn. Tuy vậy, khai
+              thác được giá trị đó là một thách thức rất lớn. Chúng ta cần phải
+              làm việc chăm chỉ hơn nữa, sáng tạo hơn nữa để có thể đưa nông sản
+              trở thành một phần có nghĩa và hợp lý với cuộc sống hàng ngày đầy
+              bận rộn của con người
+            </p>
+            <div class="p-[17px]">
+              <hr class="my-8" />
+            </div>
+            <div>
+              <div class="p-[17px] animate__animated animate__fadeIn">
+                <img
+                  src="./dist/assets/images/company/4.jpg"
+                  alt=""
+                  class="w-full h-full"
+                />
+              </div>
+              <div
+                class="grid sm:grid-cols-2 animate__animated animate__fadeIn"
+              >
+                <div class="p-[17px]">
+                  <img src="./dist/assets/images/company/5.jpg" alt="" />
+                </div>
+                <div class="p-[17px] animate__animated animate__fadeIn">
+                  <img src="./dist/assets/images/company/6.jpg" alt="" />
+                </div>
+              </div>
+              <div class="p-[17px] animate__animated animate__fadeIn">
+                <img
+                  src="./dist/assets/images/company/7.jpg"
+                  alt=""
+                  class="w-full h-full"
+                />
+              </div>
+            </div>
+          </section>
+          <section class="relative">
+            <div
+              class="absolute top-0 left-0 z-[10] min-h-[500px] max-h-[500px] w-full overflow-hidden"
+            >
+              <img
+                src="./dist/assets/images/banner13.jpg"
+                alt=""
+                class="object-cover w-full h-full overflow-hidden min-h-[500px] max-h-[500px]"
+              />
+              <div
+                class="absolute top-0 bottom-0 left-0 right-0 bg-[rgba(32,26,22,.7)]"
+              ></div>
+              <div
+                class="absolute z-[10] top-0 bottom-0 left-0 right-0 text-white text-[30px] sm:text-[86px] font-[200] text-center p-8 max-w-[956px] mx-auto w-full flex items-center justify-center"
+              >
+                <div class="z-[1000]">
+                  <h1 class="animate__animated animate__slideInUp">
+                    Tìm hiểu thêm
+                  </h1>
+                </div>
+              </div>
+            </div>
+            <div class="pt-[500px] z-[-1]"></div>
+          </section>
+          <section class="mx-auto max-w-screen-custom_lg py-[96px] px-8">
+            <h1 class="text-[38px] font-[300] text-center mb-[21px]">
+              Sản phẩm, dịch vụ, cửa hàng, tuyển dụng từ L’angfarm
+            </h1>
+            <div class="p-[17px]">
+              <hr class="my-8" />
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2">
+              <template x-for="card in $store.findOutMore">
+                <div class="w-full p-[17px]">
+                  <div>
+                    <img :src="card.photo" alt="" />
+                  </div>
+                  <div class="pt-[17px]">
+                    <h4 x-text="card.title" class="text-[28px] font-[300]"></h4>
+                    <p class="mt-4 font-[300]" x-text="card.description"></p>
+                  </div>
+                  <div>
+                    <a
+                      :href="card.href"
+                      class="py-2.5 px-5 mt-4 hover:bg-black hover:text-white font-[300] border-2 inline-block border-black"
+                      >Tìm hiểu thêm</a
+                    >
+                  </div>
+                </div>
+              </template>
+            </div>
+          </section>
+        </main>
+        <!-- End: body -->
+
+        <!-- Begin: footer -->
+        <footer>
+          <div class="bg-anti_flash_white">
+            <div class="max-w-[1020px] p-8 mx-auto">
+              <p
+                class="uppercase text-[18px] text-center font-[700] tracking-[4px]"
+              >
+                CÔNG TY TNHH QUẢNG THÁI
+              </p>
+              <div class="text-center text-[15px] font-[300] mt-10">
+                <p class="mb-2">
+                  Số ĐKKD 5800324651 do Sở KHĐT Tỉnh Lâm Đồng cấp ngày
+                  17/12/2001
+                </p>
+                <p class="mb-2">
+                  Địa chỉ: Số 1B, Hoàng Văn Thụ, Phường 5, Thành phố Đà Lạt,
+                  Tỉnh Lâm Đồng
+                </p>
+                <p class="mb-2">Tổng đài điện thoại: 19009065</p>
+                <p class="mb-2">E-mail: info@langfarm.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-black">
+            <div class="max-w-[1020px] py-16 px-8 mx-auto">
+              <p class="text-center text-white font-[300]">
+                Copyright © 2019 Quang Thai Company. All rights reserved.
+              </p>
+              <div class="flex justify-center mt-10">
+                <img src="./dist/assets/footer.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- End: footer -->
+      </div>
+
+      <!-- Begin: sidebar mobile -->
+      <div
+        x-show="visibleSidebar"
+        x-transition
+        @click.away="visibleSidebar = false"
+        class="bg-erie_black w-[260px]"
+      >
+        <div class="pt-6 px-9 pb-[72px]">
+          <div>
+            <template x-data x-for="header in $store.rawHeader">
+              <div
+                x-data="{ hasChild: !!header.children, showChild: false }"
+                class="font-[300] text-[13px] py-2 cursor-pointer"
+              >
+                <div class="flex items-center">
+                  <div
+                    x-text="hasChild ? showChild ? '-' : '+' : ''"
+                    class="mr-2 text-white select-none"
+                    @click="showChild = !showChild"
+                  ></div>
+                  <a
+                    :href="header.html"
+                    x-text="header.title"
+                    class="text-white uppercase tracking-[2px] hover:text-tiger_eye transition-all duration-300"
+                    :class="$store.router.pathname === header.html && '!text-tiger_eye'"
+                  ></a>
+                </div>
+                <div
+                  x-data=""
+                  x-show="showChild"
+                  class="flex flex-col pl-4 text-white"
+                  @click.away="showChild = false"
+                >
+                  <template x-data="" x-for="item in header.children">
+                    <a
+                      :href="item.html"
+                      x-text="item.title"
+                      class="hover:text-tiger_eye transition-all duration-300 font-[300] text-[13px] uppercase py-1"
+                    ></a>
+                  </template>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End: sidebar mobile -->
+  </body>
+</html>

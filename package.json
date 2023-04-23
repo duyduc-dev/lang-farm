@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./src/styles/index.css -o ./dist/styles.css --watch",
+    "build": "npx webpack --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.1",
+    "webpack": "^5.77.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "alpinejs": "^3.12.0"
+  }
+}

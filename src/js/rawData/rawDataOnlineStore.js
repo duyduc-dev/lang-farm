@@ -125,10 +125,6 @@ export const tratuiloc = [
     title: 'Cao ống atisô, 10 ống, hộp, mẫu antique',
     price: 65000,
   },
-  {
-    title: 'Cao ống atisô, 10 ống, hộp, mẫu antique',
-    price: 65000,
-  },
 ].map((k, i) => ({
   image: `./dist/assets/images/online-store/tra-tui-loc/${i + 1}.jpg`,
   ...k,
@@ -162,10 +158,6 @@ export const saydeo = [
   {
     title: 'Bông atisô sấy khô, 225g, bịch',
     price: 252000,
-  },
-  {
-    title: 'Cao ống atisô, 10 ống, hộp, mẫu antique',
-    price: 65000,
   },
   {
     title: 'Cao ống atisô, 10 ống, hộp, mẫu antique',

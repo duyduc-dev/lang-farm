@@ -2,8 +2,16 @@ import {menuBuffet, salientFeatures} from './rawData/rawDataBuffetPage';
 import {findOutMore} from './rawData/rawDataCompanyPage';
 import {addressCompany, contact} from './rawData/rawDataContactPage';
 import {buffetAddress, storeAddress} from './rawData/rawDataStoreAddress';
+import {
+  banhquatang,
+  categories,
+  saydeo,
+  sellingProduct,
+  tratuiloc,
+} from './rawData/rawDataOnlineStore';
 import {cards, cards2} from './rawData/rawDataStorePage';
 import rawHeader from './rawData/rawHeader';
+import {swiper} from './plugins/swiper';
 
 const app = () => {
   const setState = (key, value) => {
@@ -17,6 +25,33 @@ const app = () => {
       setState('router', {
         pathname: location.pathname,
       });
+      setState(
+        'formatMoney',
+        (amount = 0, decimalCount = 0, decimal = '.', thousands = ',') => {
+          decimalCount = Math.abs(decimalCount);
+          decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+          const negativeSign = Number(amount) < 0 ? '-' : '';
+
+          const i = parseInt(
+            (amount = Math.abs(Number(amount) || 0).toFixed(decimalCount))
+          ).toString();
+          const j = i.length > 3 ? i.length % 3 : 0;
+
+          return (
+            negativeSign +
+            (j ? i.substr(0, j) + thousands : '') +
+            i.substr(j).replace(/(\d{3})(?=\d)/g, `$1${thousands}`) +
+            (decimalCount
+              ? decimal +
+                // @ts-ignore
+                Math.abs(amount - i)
+                  .toFixed(decimalCount)
+                  .slice(2)
+              : '')
+          );
+        }
+      );
     },
 
     header: () => {
@@ -67,6 +102,15 @@ const app = () => {
       setState('addressCompany', addressCompany);
     },
 
+    onlineStorePage: () => {
+      setState('categories', categories);
+      setState('sellingProduct', sellingProduct);
+      setState('tratuiloc', tratuiloc);
+      setState('saydeo', saydeo);
+      setState('banhquatang', banhquatang);
+      swiper();
+    },
+
     init() {
       this.globalState();
       this.header();
@@ -76,6 +120,7 @@ const app = () => {
       this.companyPage();
       this.addressPage();
       this.contactPage();
+      this.onlineStorePage();
     },
   };
 };

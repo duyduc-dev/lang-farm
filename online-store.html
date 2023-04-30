@@ -17,6 +17,7 @@
     <script defer src="./dist/lib.bundle.js"></script>
     <script defer src="./dist/bundle.js"></script>
   </head>
+
   <body>
     <div>
       <!-- Begin: header -->
@@ -29,15 +30,37 @@
               class="flex justify-between h-full max-custom_md:justify-evenly max-custom_md:flex-col"
             >
               <!-- Begin: category -->
-              <div
-                class="items-center hidden h-full gap-4 px-4 cursor-pointer bg-dark_charcoal custom_md:flex"
-              >
-                <div class="w-[23px] flex flex-col">
-                  <div class="my-[2px] h-[3px] bg-white rounded"></div>
-                  <div class="my-[2px] h-[3px] bg-white rounded"></div>
-                  <div class="my-[2px] h-[3px] bg-white rounded"></div>
+              <div class="relative" x-data="{isOpen: false}">
+                <div
+                  @click="isOpen=!isOpen"
+                  class="items-center hidden h-full gap-4 px-4 cursor-pointer bg-dark_charcoal custom_md:flex"
+                >
+                  <div class="w-[23px] flex flex-col">
+                    <div class="my-[2px] h-[3px] bg-white rounded"></div>
+                    <div class="my-[2px] h-[3px] bg-white rounded"></div>
+                    <div class="my-[2px] h-[3px] bg-white rounded"></div>
+                  </div>
+                  <p class="text-white text-[14px]">Danh mục sản phẩm</p>
                 </div>
-                <p class="text-white text-[14px]">Danh mục sản phẩm</p>
+                <div
+                  x-show="isOpen"
+                  class="absolute z-[999] left-0 right-0 top-full"
+                >
+                  <div
+                    @click.outside="isOpen=false"
+                    class="bg-white py-2.5 shadow-[rgba(149,157,165,0.2)_0px_8px_24px] max-custom_md:hidden overflow-y-auto max-h-[500px]"
+                  >
+                    <template x-data x-for="category in $store.categories">
+                      <div>
+                        <a
+                          href="#"
+                          x-text="category.title"
+                          class="hover:bg-[rgba(0,0,0,.03)] transition-all duration-300 py-[7px] px-2.5 text-[14px] block font-normal"
+                        ></a>
+                      </div>
+                    </template>
+                  </div>
+                </div>
               </div>
               <!-- End: category -->
               <!-- Begin: logo -->
@@ -58,23 +81,45 @@
                 </div>
                 <div class="custom_md:hidden">
                   <!-- Begin: button mobile show category -->
-                  <button
-                    x-data
-                    class="flex flex-col items-center text-white my-[6px]"
-                    @click="console.log(324)"
+                  <div
+                    @click.outside="isOpen=false"
+                    x-data="{isOpen:false}"
+                    class="relative"
                   >
-                    <div class="flex flex-col gap-1.5">
-                      <div class="h-[2px] w-[30px] bg-white"></div>
-                      <div class="h-[2px] w-[30px] bg-white"></div>
-                      <div class="h-[2px] w-[30px] bg-white"></div>
+                    <button
+                      @click="isOpen=!isOpen"
+                      x-data
+                      class="flex flex-col items-center text-white my-[6px]"
+                    >
+                      <div class="flex flex-col gap-1.5">
+                        <div class="h-[2px] w-[30px] bg-white"></div>
+                        <div class="h-[2px] w-[30px] bg-white"></div>
+                        <div class="h-[2px] w-[30px] bg-white"></div>
+                      </div>
+                      <span class="text-[12px]">Menu</span>
+                    </button>
+                    <div
+                      x-show="isOpen"
+                      x-transition
+                      class="z-[100] max-h-screen overflow-y-auto py-2.5 fixed left-0 right-0 bg-white top-[48px]"
+                    >
+                      <template x-data x-for="category in $store.categories">
+                        <div>
+                          <a
+                            href="#"
+                            x-text="category.title"
+                            class="block p-2.5 hover:bg-tiger_eye hover:text-white border-b"
+                          ></a>
+                        </div>
+                      </template>
                     </div>
-                    <span class="text-[12px]">Menu</span>
-                  </button>
-                  <!-- End: button mobile show category -->
+                  </div>
+                  <!--   End: button mobile show category -->
                 </div>
               </div>
               <!-- End: logo -->
               <!-- Begin: search -->
+
               <div class="flex items-center">
                 <div
                   class="w-[348px] max-custom_md:w-full p-[3px_5px] relative"
@@ -127,6 +172,327 @@
         </div>
       </header>
       <!-- End: header -->
+
+      <main class="bg-anti_flash_white !min-h-screen">
+        <!-- Begin: carousel -->
+        <div class="z-[-1] max-w-screen-custom_x px-[15px] mx-auto">
+          <div id="swiper-banner" class="relative swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide">
+                <div>
+                  <img
+                    src="./dist/assets/images/slider1.jpg"
+                    class="w-full h-full z-[-1]"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div>
+                  <img
+                    src="./dist/assets/images/slider2.webp"
+                    class="w-full h-full z-[-1]"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="absolute swiper-btn-prev top-1/2 z-[10] -translate-y-1/2 left-6 duration-300"
+            >
+              <button
+                class="rounded-md bg-tiger_eye text-white w-[30px] h-[50px] text-[20px] hover:bg-philippine_gray transition-all"
+              >
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+            </div>
+            <div
+              class="absolute swiper-btn-next top-1/2 z-[10] -translate-y-1/2 right-6"
+            >
+              <button
+                class="rounded-md bg-tiger_eye w-[30px] h-[50px] hover:bg-philippine_gray transition-all duration-300 text-white text-[20px]"
+              >
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- End: carousel -->
+
+        <!-- Begin:    -->
+        <div
+          class="mt-10 px-[15px] max-w-screen-custom_x mx-auto overflow-hidden"
+        >
+          <div class="bg-white">
+            <div clas="py-5">
+              <p class="p-[15px] pb-2.5 text-dark_charcoal text-[19px]">
+                Sản phẩm bán chạy
+              </p>
+            </div>
+            <div class="mx-2.5 pb-5 mb-1">
+              <div class="relative overflow-hidden">
+                <div id="swiper-product" class="mt-5">
+                  <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <template x-data x-for="item in $store.sellingProduct">
+                      <div class="swiper-slide">
+                        <a href="#" class="block">
+                          <img
+                            :src="item.image"
+                            alt=""
+                            class="w-full h-full max-w-[198px] mx-auto"
+                          />
+                          <div class="text-[14px] p-[5px_20px] text-center">
+                            <h3
+                              class="text-granite_gray line-2-3dot"
+                              x-text="item.title"
+                            >
+                              Hồng sấy treo nhật bản 250g bịch dòng phổ
+                            </h3>
+                            <p class="text-center text-tiger_eye">
+                              <span x-text="$store.formatMoney(item.price)">
+                                152,200</span
+                              >
+                              <span class="underline">đ</span>
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End:    -->
+        <!-- Begin:    -->
+        <div
+          class="mt-10 px-[15px] max-w-screen-custom_x mx-auto overflow-hidden"
+        >
+          <div class="bg-white">
+            <div clas="py-5">
+              <p class="p-[15px] pb-2.5 text-dark_charcoal text-[19px]">
+                Trà túi lọc
+              </p>
+            </div>
+            <div class="mx-2.5 pb-5 mb-1">
+              <div class="relative overflow-hidden">
+                <div id="swiper-product" class="mt-5">
+                  <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <template x-data x-for="item in $store.tratuiloc">
+                      <div class="swiper-slide">
+                        <a href="#" class="block">
+                          <img
+                            :src="item.image"
+                            alt=""
+                            class="w-full h-full max-w-[198px] mx-auto"
+                          />
+                          <div class="text-[14px] p-[5px_20px] text-center">
+                            <h3
+                              class="text-granite_gray line-2-3dot"
+                              x-text="item.title"
+                            >
+                              Hồng sấy treo nhật bản 250g bịch dòng phổ
+                            </h3>
+                            <p class="text-center text-tiger_eye">
+                              <span x-text="$store.formatMoney(item.price)">
+                                152,200</span
+                              >
+                              <span class="underline">đ</span>
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End:    -->
+        <!-- Begin:    -->
+        <div
+          class="mt-10 px-[15px] max-w-screen-custom_x mx-auto overflow-hidden"
+        >
+          <div class="bg-white">
+            <div clas="py-5">
+              <p class="p-[15px] pb-2.5 text-dark_charcoal text-[19px]">
+                Trái cây sấy dẻo
+              </p>
+            </div>
+            <div class="mx-2.5 pb-5 mb-1">
+              <div class="relative overflow-hidden">
+                <div id="swiper-product" class="mt-5">
+                  <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <template x-data x-for="item in $store.saydeo">
+                      <div class="swiper-slide">
+                        <a href="#" class="block">
+                          <img
+                            :src="item.image"
+                            alt=""
+                            class="w-full h-full max-w-[198px] mx-auto"
+                          />
+                          <div class="text-[14px] p-[5px_20px] text-center">
+                            <h3
+                              class="text-granite_gray line-2-3dot"
+                              x-text="item.title"
+                            >
+                              Hồng sấy treo nhật bản 250g bịch dòng phổ
+                            </h3>
+                            <p class="text-center text-tiger_eye">
+                              <span x-text="$store.formatMoney(item.price)">
+                                152,200</span
+                              >
+                              <span class="underline">đ</span>
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End:    -->
+        <!-- Begin:    -->
+        <div
+          class="mt-10 px-[15px] max-w-screen-custom_x mx-auto overflow-hidden"
+        >
+          <div class="bg-white">
+            <div clas="py-5">
+              <p class="p-[15px] pb-2.5 text-dark_charcoal text-[19px]">
+                Bánh quà tặng
+              </p>
+            </div>
+            <div class="mx-2.5 pb-5 mb-1">
+              <div class="relative overflow-hidden">
+                <div id="swiper-product" class="mt-5">
+                  <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <template x-data x-for="item in $store.banhquatang">
+                      <div class="swiper-slide">
+                        <a href="#" class="block">
+                          <img
+                            :src="item.image"
+                            alt=""
+                            class="w-full h-full max-w-[198px] mx-auto"
+                          />
+                          <div class="text-[14px] p-[5px_20px] text-center">
+                            <h3
+                              class="text-granite_gray line-2-3dot"
+                              x-text="item.title"
+                            >
+                              Hồng sấy treo nhật bản 250g bịch dòng phổ
+                            </h3>
+                            <p class="text-center text-tiger_eye">
+                              <span x-text="$store.formatMoney(item.price)">
+                                152,200</span
+                              >
+                              <span class="underline">đ</span>
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End:    -->
+      </main>
+
+      <!-- Begin: footer-->
+      <footer class="bg-bistre">
+        <div class="py-10 mx-auto max-w-screen-custom_x">
+          <div class="px-[15px] text-[14px] flex flex-wrap justify-between">
+            <div class="text-timberwolf">
+              <div class="w-[200px]">
+                <img
+                  src="./dist/assets/images/logo-text.webp"
+                  class="w-full h-full"
+                  alt=""
+                />
+              </div>
+              <ul class="mt-5">
+                <li>Công Ty TNHH Ola Việt Nam</li>
+                <li>MST: 0315241288</li>
+                <li>
+                  D8/39N ấp 4, Xã Vĩnh Lộc A, Huyện Bình Chánh, TP. Hồ Chí Minh,
+                  Việt Nam
+                </li>
+                <li>Tổng đài: 19009065</li>
+                <li>
+                  Số ĐKKD 0315241288 do sở KHĐT TP. HCM cấp ngày 24/08/2018
+                </li>
+                <li>hotro@langfarm.com</li>
+              </ul>
+            </div>
+            <div class="text-timberwolf">
+              <div class="text-[18px]">Danh mục sản phẩm</div>
+              <ul class="mt-5">
+                <li>Tất cả sản phẩm</li>
+                <li>Set quà tết L'angfarm 2023</li>
+                <li>Bánh mứt đặc sản</li>
+                <li>Cà phê</li>
+                <li>Hạt đặc sản</li>
+                <li>Bột nông sản</li>
+                <li>Matcha & sencha</li>
+                <li>Mứt & nước cốt</li>
+                <li>Set quà</li>
+                <li>Thảo mộc</li>
+                <li>Cao thảo mộc</li>
+                <li>Thịt khô</li>
+                <li>Trái cây sấy dẻo</li>
+                <li>Trái cây sấy giòn</li>
+                <li>Trà hoà tan</li>
+                <li>Trà pha ấm</li>
+                <li>Trà túi lọc</li>
+                <li>Quà tặng</li>
+                <li>Bánh quà tặng</li>
+              </ul>
+            </div>
+            <div class="text-timberwolf">
+              <div class="text-[18px]">Hỗ trợ khách hàng</div>
+              <ul class="mt-5">
+                <li>Đăng nhập</li>
+                <li>Đăng ký</li>
+                <li>Điều khoản sử dụng</li>
+                <li>Chính sách bảo mật</li>
+                <li>Chính sách thanh toán</li>
+                <li>Chính sách giao hàng</li>
+                <li>Chính sách đổi trả hàng</li>
+                <li>Hướng dẫn mua hàng online</li>
+                <li>Chính sách xuất hoá đơn GTGT</li>
+              </ul>
+            </div>
+            <div class="text-timberwolf">
+              <div class="text-[18px]">Thông tin công ty</div>
+              <ul class="mt-5">
+                <li>Trang chủ</li>
+                <li>Sản phẩm</li>
+                <li>Store</li>
+                <li>Buffet</li>
+                <li>Công ty</li>
+                <li>Tuyển dụng</li>
+                <li>Địa chỉ</li>
+                <li>Liên hệ</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- End: footer-->
     </div>
   </body>
 </html>

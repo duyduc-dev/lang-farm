@@ -3,7 +3,7 @@ export const salientFeatures = [
     title: 'Ăn uống thoả thích, không lo về giá',
     description:
       'Với giá vé buffet cố định, khách hàng có thể thoả thích thưởng thức bên gia đình và người thân mà không cần phải lo lắng về bất kỳ chi phí phát sinh nào.',
-  },
+   },
   {
     title: 'Thực phẩm nguồn gốc nông sản',
     description:

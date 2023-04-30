@@ -169,6 +169,10 @@ module.exports = {
       anti_flash_white: '#f0f0f0',
       dark_charcoal: '#333',
       cadmium_green: '#006837',
+      bistre: '#33261b',
+      timberwolf: '#dbd4d4',
+      philippine_gray: '#869791',
+      granite_gray: '#666666',
     }),
     columns: {
       auto: 'auto',

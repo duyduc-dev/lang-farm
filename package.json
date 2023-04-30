@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "tailwind": "npx tailwindcss -i ./src/styles/index.css -o ./dist/styles.css --watch",
-    "build": "npx webpack --watch"
+   
   },
   "devDependencies": {
     "tailwindcss": "^3.3.1",
